@@ -19,26 +19,34 @@ class Book {
 class Library {
   constructor(books) {
     this.bookCount = books.length;
-    this.books = books;
+    this.books = [
+      {
+        id: 1,
+        title: "Name of the Wind",
+        author: "Patrick Rothfuss",
+        read: true
+      }
+    ];
+    console.log(books)
+    this.addBook = this.addBook.bind(this)
   }
   addBook(book) {
-    if (!book) {
-      // Select the inputs from the form -- title, author, and read
-      var title = document.getElementById("title");
-      var author = document.getElementById("author");
-      var read = document.getElementById("read");
-      // Increment book count property
-      this.nextId++;
-      // Create an instance from my Book class with the input values
-      var newBook = new Book(
-        this.nextId,
-        title.value,
-        author.value,
-        read.checked
+    // Select the inputs from the form -- title, author, and read
+    var title = document.getElementById("title");
+    var author = document.getElementById("author");
+    var read = document.getElementById("read");
+    // Increment book count property
+    // this.id += this.bookCount;
+    // Create an instance from my Book class with the input values
+    var newBook = new Book(
+      this.bookCount++,
+      title.value,
+      author.value,
+      read.checked
       );
       // Push the new book instance into the books array
       this.books.push(newBook);
-    }
+      console.log(newBook)
     // Select the table body
     const tbody = document.getElementById("tableBody");
     // Create new table row
